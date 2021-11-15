@@ -1,0 +1,20 @@
+drop table if exists rhall.zodiac_sandbox;
+
+create table rhall.zodiac_sandbox as(
+  select distinct id, 
+  case  
+WHEN (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 3 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) >= 21) OR (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 4 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) <= 19) THEN 'Aries'
+WHEN (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 4 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) >= 20) OR (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 5 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) <= 20) THEN 'Taurus'
+WHEN (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 5 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) >= 21) OR (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 6 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) <= 20) THEN 'Gemini'
+WHEN (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 6 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) >= 21) OR (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 7 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) <= 20) THEN 'Cancer'
+WHEN (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 7 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) >= 21) OR (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 8 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) <= 20) THEN 'Leo'
+WHEN (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 8 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) >= 21) OR (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 9 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) <= 20) THEN 'Virgo'
+WHEN (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 9 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) >= 21) OR (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 10 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) <= 20) THEN 'Libra'
+WHEN (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 10 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) >= 21) OR (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 11 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) <= 20) THEN 'Scorpio'
+WHEN (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 11 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) >= 21) OR (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 12 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) <= 20) THEN 'Sagittarius'
+WHEN ((DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 12 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) >= 21) OR (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 1 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) <= 20) AND (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) <> 1 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) <> 1)) THEN 'Capricorn'
+WHEN (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 1 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) >= 21) OR (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 2 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) <= 20) THEN 'Aquarius'
+WHEN (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 2 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) >= 21) OR (DATE_PART(month, to_date(birthdate, 'YYYY-MM-DD')) = 3 AND DATE_PART(day, to_date(birthdate, 'YYYY-MM-DD')) <= 20) THEN 'Pisces'
+else null
+end as SunSign
+from voterfile.person);
