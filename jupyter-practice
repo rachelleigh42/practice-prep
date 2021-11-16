@@ -1,0 +1,67 @@
+import math
+import collections
+import numpy as np
+import pandas as pd
+
+import matplotlib.pyplot as pp
+
+%matplotlib inline
+
+# this is a note hello!
+
+print()
+
+print("Hello, world!")
+
+x = 5+3
+print(x)
+
+# line numbers buddy wooo
+rachel = "you are a gem"
+print(rachel)
+
+array_a = np.array([1,2,3])
+
+array_a
+
+array_b = np.array([[1,2,3],[4,5,6]])
+array_b
+
+shape(array_b)
+
+array_b.shape
+
+list_a = [[1,2,3],[4,5,6]]
+
+array_c = np.array(list_a)
+
+array_c
+
+print(array_c)
+
+array_c[0]+array_c[1]
+
+np.mean(array_c)
+
+array_c[1,2]
+
+array_c[0,1]
+
+array_c[:,1]
+
+np.mean(array_c[:,1])
+
+np.mean(array_c[:,0])
+
+array_c + 1
+
+array_c - 1
+
+array_d = np.array(array_c, dtype = np.float16)
+
+array_d
+
+realestate = pd.read_csv('http://localhost:8889/edit/Real_estate(cleaned).csv', error_bad_lines=False)
+
+print(realestate)
+
